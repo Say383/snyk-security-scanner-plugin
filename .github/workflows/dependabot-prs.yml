@@ -5,13 +5,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Fetch Metadata from Dependabot PRs
+    - name: Fetch Metadata from Dependabot
       id: dependabot-metadata
       uses: dependabot/fetch-metadata@v1.3.6
       with:
         alert-lookup: true
         compat-lookup: true
         github-token: "${{ secrets.PAT_TOKEN }}"
+      - name: Maven Dependency Tree Dependency Submission
+        uses: advanced-security/maven-dependency-submission-action@v3.0.0
 
 name: Dependabot auto-approve
 on: pull_request_target
