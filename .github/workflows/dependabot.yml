@@ -1,18 +1,21 @@
 -- .github/workflows/dependabot-prs.yml
-- name: Dependabot Pull Request
+- name: Fetch Metadata from Dependabot PRs
+  uses: dependabot/fetch-metadata@v1.3.6
+
+name: Dependabot Pull Request
 on: pull_request_target
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Fetch Metadata from Dependabot
+    - name: Fetch Dependabot metadata
       id: dependabot-metadata
       uses: dependabot/fetch-metadata@v1.3.6
       with:
         alert-lookup: true
         compat-lookup: true
         github-token: "${{ secrets.PAT_TOKEN }}"
-      
+
 - name: Dependabot auto-approve
 on: pull_request_target
 permissions:
