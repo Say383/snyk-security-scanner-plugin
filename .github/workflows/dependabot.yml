@@ -1,7 +1,4 @@
 -- .github/workflows/dependabot-prs.yml
-- name: Maven Dependency Tree Dependency Submission
-  uses: advanced-security/maven-dependency-submission-action@v3.0.0
-
 - name: Dependabot Pull Request
 on: pull_request_target
 jobs:
