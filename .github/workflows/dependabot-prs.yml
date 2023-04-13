@@ -1,5 +1,8 @@
 -- .github/workflows/dependabot-prs.yml
-name: Dependabot Pull Request
+- name: Maven Dependency Tree Dependency Submission
+  uses: advanced-security/maven-dependency-submission-action@v3.0.0
+
+- name: Dependabot Pull Request
 on: pull_request_target
 jobs:
   build:
@@ -12,10 +15,8 @@ jobs:
         alert-lookup: true
         compat-lookup: true
         github-token: "${{ secrets.PAT_TOKEN }}"
-      - name: Maven Dependency Tree Dependency Submission
-        uses: advanced-security/maven-dependency-submission-action@v3.0.0
-
-name: Dependabot auto-approve
+      
+- name: Dependabot auto-approve
 on: pull_request_target
 permissions:
   pull-requests: write
@@ -40,7 +41,7 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-name: Dependabot auto-merge
+- name: Dependabot auto-merge
 on: pull_request_target
 permissions:
   pull-requests: write
@@ -60,7 +61,7 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-name: Dependabot auto-label
+- name: Dependabot auto-label
 on: pull_request_target
 permissions:
   pull-requests: write
